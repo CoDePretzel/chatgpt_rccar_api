@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Mover un Carro RC",
+    "name_for_model": "Move_RC_Car",
+    "description_for_human": "Connecta a chatgpt con un control de un carro RC de juguete",
+    "description_for_model": "Allows to move an RC Car front and back, as well as turn",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "http://localhost:5003/openapi.yaml"
+    },
+    "logo_url": "http://localhost:5003/logo.png",
+    "contact_email": "legal@example.com",
+    "legal_info_url": "http://example.com/legal"
+  }
+  

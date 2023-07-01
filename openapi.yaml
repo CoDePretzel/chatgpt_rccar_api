@@ -1,0 +1,40 @@
+openapi: 3.0.2
+info:
+  title: RC Car Controller API
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:5003'
+paths:
+  /car/move:
+    post:
+      operationId: moveCar  # Add this line
+      summary: Move the RC car
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarAction'
+      responses:
+        '200':
+          description: Car moved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  action:
+                    type: string
+        '400':
+          description: Invalid action
+components:
+  schemas:
+    CarAction:
+      type: object
+      required:
+        - action
+      properties:
+        action:
+          type: string

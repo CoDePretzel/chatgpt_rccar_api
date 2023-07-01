@@ -16,20 +16,25 @@ NOTE: These steps assume the use of Windows CLI or Git CLI on Windows
 1. Create a directory called "RC_car_api"
 1. Move to that directory
 1. Create a virtual environment for the example
-```shell
-python -m venv chatgpt_rccar_api_venv
-```
+   ```shell
+   python -m venv chatgpt_rccar_api_venv
+   ```
 1. Activate the environment, using one of the following commands
-```shell
-source chatgpt_rccar_api_venv/bin/activate  # for Unix/Linux
-chatgpt_rccar_api_venv\Scripts\activate  # for Windows
-source chatgpt_rccar_api_venv/Scripts/activate # for git CLI on windows
-```
+   ```shell
+   source chatgpt_rccar_api_venv/bin/activate  # for Unix/Linux
+   chatgpt_rccar_api_venv\Scripts\activate  # for Windows
+   source chatgpt_rccar_api_venv/Scripts/activate # for git CLI on windows
+   ```
 1. Clone the repository within "RC_car_api" directory with the following command:
    ```shell
-   git clone https://github.com/your-username/moverccar-api.git
+   git clone https://github.com/Karosuo/chatgpt_rccar_api.git
    ```
 1. Install the requirements
-```shell
-pip install -r chatgpt_rccar_api/requirements.txt # Remember the correct use of forward/backward slashes when using widnows CLI or git CLI
-```
+   ```shell
+   pip install -r chatgpt_rccar_api/requirements.txt # Remember the correct use of forward/backward slashes when using widnows CLI or git CLI
+   ```
+1. Move into the cloned directory
+1. Run the server by using the following command:
+   ```shell
+   uvicorn main:app --reload
+   ```

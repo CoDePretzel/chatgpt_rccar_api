@@ -38,3 +38,7 @@ NOTE: These steps assume the use of Windows CLI or Git CLI on Windows
    ```shell
    uvicorn main:app --reload
    ```
+
+## Examples
+In order to make the car move, we can request it directly, or make it a bit more interesting, like
+"Your goal is to get to the apple, which is 2 blocks ahead an 1 to the right, move the car accordingly to make it to the apple"

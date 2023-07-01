@@ -27,9 +27,14 @@ source chatgpt_rccar_api_venv/Scripts/activate # for git CLI on windows
 ```
 1. Clone the repository within "RC_car_api" directory with the following command:
    ```shell
-   git clone https://github.com/your-username/moverccar-api.git
+   git clone https://github.com/Karosuo/chatgpt_rccar_api.git
    ```
 1. Install the requirements
 ```shell
 pip install -r chatgpt_rccar_api/requirements.txt # Remember the correct use of forward/backward slashes when using widnows CLI or git CLI
+```
+1. Move into the cloned directory
+1. Run the server by using the following command:
+```shell
+ uvicorn main:app --reload
 ```

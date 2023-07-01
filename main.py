@@ -1,7 +1,7 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+# from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import json
 import os
@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-app.mount("/", StaticFiles(directory="."), name="root")
+# app.mount("/", StaticFiles(directory="."), name="root")
 
 class RCCar:
     def __init__(self):
@@ -40,7 +40,7 @@ class CarAction(BaseModel):
     action: str
 
 @app.post("/car/move")
-async def move_car(action: CarAction):
+async def move_car(action: CarAction):    
     if action.action == "forward":
         car.move_forward()
     elif action.action == "backward":
@@ -54,16 +54,26 @@ async def move_car(action: CarAction):
 
     return {"status": "success", "action": action.action}
 
-# @app.get("/.well-known/ai-plugin.json", include_in_schema=False)
-# async def serve_manifest():
-#     try:
-#         with open("./manifest.json") as f:
-#             data = f.read()
-#             # data = json.load(f)
-#         # return data
-#         return JSONResponse(content=json.loads(data))
-#     except FileNotFoundError:
-#         raise HTTPException(status_code=404, detail="File not found")
+@app.get("/.well-known/ai-plugin.json", include_in_schema=False)
+async def serve_manifest():
+    try:
+        with open("./manifest.json") as f:
+            data = f.read()
+        return JSONResponse(content=json.loads(data))
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/logo.png")
+async def plugin_logo():
+    filename = 'logo.png'
+    return FileResponse(filename, media_type='image/png')
+
+@app.get("/openapi.yaml")
+async def openapi_spec(request: Request):
+    host = request.headers['host']
+    with open("openapi.yaml") as f:
+        text = f.read()
+    return FileResponse("openapi.yaml", media_type='application/x-yaml')
 
 if __name__ == "__main__":
     import uvicorn

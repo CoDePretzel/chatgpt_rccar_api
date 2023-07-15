@@ -3,7 +3,7 @@
     "name_for_human": "Mover un Carro RC",
     "name_for_model": "Move_RC_Car",
     "description_for_human": "Connecta a chatgpt con un control de un carro RC de juguete",
-    "description_for_model": "Allows to move an RC Car front and back, as well as turn",
+    "description_for_model": "Allows to move an RC Car front (forward) and back (backward), as well as turn (left) and (right), using the parenthesis words as api entries",
     "auth": {
       "type": "none"
     },
